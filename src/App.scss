@@ -1,0 +1,53 @@
+@import '~antd/dist/antd.css';
+@import './styles/variables.scss';
+
+.App {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  &__header{
+    padding: 0 10px;
+    color: white;
+    font-size: $ms-font-size-20;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &__title{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .anticon{
+        font-size: $ms-font-size-24;
+      }
+  
+      .ant-typography{
+        color: white;
+        font-size: $ms-font-size-20;
+        margin-bottom: 0;
+        margin-left: 12px;
+      }
+    }
+
+    &__action{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-right: 20px;
+    }
+  }
+
+  &__container{
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 64px);
+  }
+
+  &__sub-container{
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+  }
+}

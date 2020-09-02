@@ -1,0 +1,10 @@
+@import '../../styles/variables.scss';
+
+.Sidebar{
+  height: 100%;
+
+  &__menu{
+    border: 0 !important;;
+    background: transparent !important;
+  }
+}
