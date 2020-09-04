@@ -1,44 +1,55 @@
-import React from 'react'
-import { Card, Avatar } from 'antd';
+import React, { useEffect, useState } from 'react'
+import { Card, Spin } from 'antd';
 import { withRouter } from 'react-router-dom';
+import { getClassList } from '../../shared/api';
+import { SiGoogleclassroom } from "react-icons/si";
+import './Classes.scss';
 
 const { Meta } = Card;
 
-const CLASSES_LIST = [
-  {
-    id: '12_TH_CLASS',
-    title: '12th Class',
-    description: 'This is the description',
-    route: '12'
-  },
-  {
-    id: '11_TH_CLASS',
-    title: '11th Class',
-    description: 'This is the description',
-    route: '11'
-  }
-]
-
 function Classes(props) {
+  const [loader, setLoader] = useState(false);
+  const [classList, setClassList] = useState([]);
+
   const _goToClassDetails = (item) => {
-    props.history.push(`/subject/${item.route}`);
+    props.history.push(`/subject/${item.id}`);
   }
+
+  useEffect(() => {
+    setLoader(true);
+    const classList = getClassList();
+    classList.then(snapshot => {
+      let classList = [];
+      snapshot.forEach(snap => {
+        classList.push(snap.val());
+      });
+      setClassList(classList)
+      setLoader(false);
+    })
+  }, [props.match.url])
+
   return (
-    <div className="Classes">
-      {
-        CLASSES_LIST.map((item) => (
-          <Card key={item.id} id={item.id} style={{ width: 300, marginBottom: 16, display: 'inline-block' }} hoverable onClick={() => { _goToClassDetails(item) }}>
-            <Meta
-              avatar={
-                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-              }
-              title={item.title}
-              description={item.description}
-            />
-          </Card>
-        ))
-      }
-    </div >
+    <Spin spinning={loader} >
+      <div className="Classes">
+        {
+          classList.map((item) => (
+            <Card className="Classes__Card"
+              key={item.id} id={item.id}
+              style={{ width: 300, marginBottom: 16, display: 'inline-block' }}
+              hoverable onClick={() => { _goToClassDetails(item) }}
+            >
+              <Meta
+                avatar={
+                  <SiGoogleclassroom style={{ fontSize: 44, color: '#1890ff' }} />
+                }
+                title={item.title}
+                description={item.desc}
+              />
+            </Card>
+          ))
+        }
+      </div >
+    </Spin>
   )
 }
 

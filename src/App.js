@@ -9,16 +9,11 @@ import { Classes } from './components/classes';
 import { Subjects } from './components/subjects';
 import { CalculatorOutlined, UserOutlined } from '@ant-design/icons';
 import './App.scss';
-import { FIREBASE_CONFIG } from './config/firebaseConfig';
 import { Login, Signup } from './components/login';
 import Avatar from 'antd/lib/avatar/avatar';
 
 const { Header } = Layout;
 const { Title } = Typography;
-
-// Initialize Firebase
-firebase.initializeApp(FIREBASE_CONFIG);
-firebase.analytics();
 
 const ProtectedRoute = ({ uid, component: Component, ...rest }) => {
   if (uid) {

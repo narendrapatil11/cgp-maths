@@ -1,0 +1,27 @@
+.Subjects{
+
+  .ant-card{
+    margin: 10px;
+    width: 350px;
+    display: inline-block;
+    .ant-card-body{
+      padding: 16px;
+    }
+    .ant-card-meta-avatar {
+      float: left;
+      padding-right: 16px
+    }
+    .ant-avatar-image {
+      height: 60px;
+      border-radius: 50%;
+      width: 60px;
+    }
+    .ant-card-meta-description {
+      margin: -4px 0;
+      height: 30px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

@@ -4,6 +4,12 @@ import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { HashRouter } from "react-router-dom";
+import firebase from "firebase";
+import { FIREBASE_CONFIG } from './config/firebaseConfig';
+
+// Initialize Firebase
+firebase.initializeApp(FIREBASE_CONFIG);
+firebase.analytics();
 
 ReactDOM.render(
   (<HashRouter >

@@ -3,37 +3,38 @@ import './Sidebar.scss';
 import { withRouter } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import { PieChartOutlined } from '@ant-design/icons'
+import { SiGoogleclassroom } from 'react-icons/si';
 const { Sider } = Layout;
 
 const navLinkGroups = [
 	{
 		name: 'Dashboard',
 		key: 'DASHBOARD',
-		icon: 'GoToDashboard',
+		icon: <PieChartOutlined />,
 		route: '/',
 	},
 	{
 		name: 'Classes',
 		key: 'CLASSES',
-		icon: 'NumberSequence',
+		icon: <span class="anticon "><SiGoogleclassroom /></span>,
 		route: '/classes',
 	},
 	{
 		name: 'Subjects',
 		key: 'SUBJECTS',
-		icon: 'DietPlanNotebook',
+		icon: <span class="anticon "><SiGoogleclassroom /></span>,
 		route: '/subjects',
 	},
 	{
 		name: 'Exam Papers',
 		key: 'EXAM_PAPERS',
-		icon: 'WaitlistConfirm',
+		icon: <span class="anticon "><SiGoogleclassroom /></span>,
 		route: '/examPapers',
 	},
 	{
 		name: 'Videos',
 		key: 'VIDEOS',
-		icon: 'Video',
+		icon: <span class="anticon "><SiGoogleclassroom /></span>,
 		route: '/vidoes',
 	},
 ];
@@ -55,7 +56,7 @@ function Sidebar(props) {
 	return (
 		<Sider className="Sidebar" theme="dark" collapsible collapsed={sider} onCollapse={onCollapse}>
 			<Menu className="Sidebar__menu" theme="dark" selectedKeys={[selectedMenu]} mode="inline" onSelect={_onLinkClick}>
-				{navLinkGroups.map((nav => <Menu.Item key={nav.key} icon={<PieChartOutlined />}>{nav.name}</Menu.Item>))}
+				{navLinkGroups.map((nav => <Menu.Item key={nav.key} icon={nav.icon}>{nav.name}</Menu.Item>))}
 			</Menu>
 		</Sider>
 	)
